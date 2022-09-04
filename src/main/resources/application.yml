@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: spring-batch
+
+  config:
+    activate:
+      on-profile: mysql
+
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/springbatch?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+
+  batch:
+    jdbc:
+      initialize-schema: never
+
