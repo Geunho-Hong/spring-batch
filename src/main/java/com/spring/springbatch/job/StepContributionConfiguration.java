@@ -36,6 +36,7 @@ public class StepContributionConfiguration {
                     @Override
                     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
                         log.info("step1 has executed");
+                        Thread.sleep(3000);
                         return RepeatStatus.FINISHED;
                     }
                 })

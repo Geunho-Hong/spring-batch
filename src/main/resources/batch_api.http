@@ -1,0 +1,17 @@
+
+### sync batch
+POST http://localhost:8080/batch
+Content-Type: application/json
+
+{
+  "memberId": "grayson"
+}
+
+
+### async batch
+POST http://localhost:8080/async-batch
+Content-Type: application/json
+
+{
+"memberId": "grayson"
+}
