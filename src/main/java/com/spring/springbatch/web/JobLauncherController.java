@@ -6,7 +6,11 @@ import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.batch.BasicBatchConfigurer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,12 +21,14 @@ import java.util.Date;
 @RestController
 public class JobLauncherController {
 
-    private final Job job;
+    @Autowired
+    @Qualifier("sampleJob")
+    private Job job;
+
     private final JobLauncher jobLauncher;
     private final BasicBatchConfigurer basicBatchConfigurer;
 
-    public JobLauncherController(Job job, JobLauncher jobLauncher, BasicBatchConfigurer basicBatchConfigurer) {
-        this.job = job;
+    public JobLauncherController(JobLauncher jobLauncher, BasicBatchConfigurer basicBatchConfigurer) {
         this.jobLauncher = jobLauncher;
         this.basicBatchConfigurer = basicBatchConfigurer;
     }
@@ -56,3 +62,5 @@ public class JobLauncherController {
     }
 
 }
+
+
