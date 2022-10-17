@@ -54,6 +54,7 @@ public class JobScopeConfiguration {
     @JobScope
     public Step scopeStep1(@Value("#{jobParameters['message']}") String message) {
         log.info("message = " + message);
+
         return stepBuilderFactory.get("scopeStep1")
                 .allowStartIfComplete(true)
                 .tasklet(scopeTasklet(null))
